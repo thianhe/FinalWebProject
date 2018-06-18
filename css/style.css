@@ -38,6 +38,15 @@ nav a {
     margin-bottom: 4rem;
 }
 
+.featurette-divider {
+    margin: 5rem 0;
+    /* Space out the Bootstrap <hr> more */
+}
+
+footer p {
+    margin-bottom: 10%;
+}
+
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
@@ -56,18 +65,19 @@ nav a {
     font-size: 35px;
 }
 
-.btn {
+.carousel-item .btn {
     margin-top: 10%;
 }
 
-.btn-primary.custom-btn {
+.carousel-item .btn-primary.custom-btn {
     background-color: rgba(100, 100, 100, 0.1);
     border: 3px solid white;
+    border-radius: 15px;
 }
 
-.btn-primary.custom-btn:hover {
-    background-color: black;
-    border: 3px solid black;
+.carousel-item .btn-primary.custom-btn:hover {
+    background-color: #343A40;
+    border: 3px solid #343A40;
 }
 
 @media (max-width: 992px) {
@@ -132,6 +142,15 @@ nav a {
 
 .explore-title {
     margin-bottom: 5%;
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, .1);
+}
+
+.explore-game a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Raleway', sans-serif;
 }
 
 .card {
@@ -144,4 +163,14 @@ nav a {
 
 .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.explore .btn-primary.custom-btn {
+    background-color: #343A40;
+    border: 3px solid #343A40;
+    border-radius: 15px;
+}
+
+.explore .btn-primary.custom-btn:hover {
+    filter: brightness(90%);
 }
