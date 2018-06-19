@@ -11,7 +11,14 @@ html {
 }
 
 body {
-    color: #5a5a5a;
+    padding-top: 60px;
+    background-color: #F2F2F2;
+}
+
+@media only screen and (max-width: 979px) {
+    body {
+        padding-top: 0px;
+    }
 }
 
 .logo :hover, nav a :hover, .login:hover {
@@ -44,7 +51,7 @@ nav a {
 }
 
 footer p {
-    margin-bottom: 10%;
+    margin-bottom: 8%;
 }
 
 /* Since positioning the image, we need to help out the caption */
@@ -80,7 +87,7 @@ footer p {
     border: 3px solid #343A40;
 }
 
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
     .carousel-caption h1 {
         font-size: 50px;
     }
@@ -89,7 +96,7 @@ footer p {
     }
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .carousel-caption h1 {
         font-size: 45px;
     }
@@ -113,7 +120,7 @@ footer p {
     height: 48rem;
 }
 
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
     .carousel-item {
         height: 34rem;
     }
@@ -122,7 +129,7 @@ footer p {
     }
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .carousel-item {
         height: 30rem;
     }
@@ -131,7 +138,7 @@ footer p {
     }
 }
 
-@media (max-width: 576px) {
+@media only screen and (max-width: 576px) {
     .carousel-item {
         height: 24rem;
     }
@@ -169,8 +176,16 @@ footer p {
     background-color: #343A40;
     border: 3px solid #343A40;
     border-radius: 15px;
+    text-decoration: none;
 }
 
 .explore .btn-primary.custom-btn:hover {
-    filter: brightness(90%);
+    background-color: white;
+    color: #343A40;
+}
+
+@media only screen and (max-width: 768px) {
+    .anthem {
+        margin-bottom: 1%;
+    }
 }
