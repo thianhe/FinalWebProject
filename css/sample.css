@@ -14,7 +14,9 @@ body {
     background-color: #F2F2F2;
 }
 
-.container {}
+#img .container {
+    padding: 0;
+}
 
 @media only screen and (max-width: 979px) {
     body {
@@ -61,19 +63,17 @@ footer p {
     margin-top: 5%;
 }
 
+.jumbotron-fluid {
+    padding: 0;
+}
+
 @media only screen and (max-width: 976px) {
     .jumbotron {
         margin-top: 15%;
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .jumbotron {
-        margin-top: 20%;
-    }
-}
-
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 974px) {
     .jumbotron {
         margin-top: 20%;
     }
@@ -96,4 +96,115 @@ div.col-8 div {
 .nav-pills {
     margin-top: 3%;
     background-color: white !important;
+}
+
+.game-pic img {
+    width: 100%;
+}
+
+.carousel-caption {
+    top: 5%;
+    color: black;
+    left: -56%;
+}
+
+h1 {
+    margin: 2% 0;
+}
+
+.carousel-caption h1 {
+    font-size: 19px;
+    margin-bottom: 5%;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, .1);
+}
+
+@media only screen and (max-width: 1196px) {
+    .carousel-caption {
+        top: 4%;
+        left: -53%;
+    }
+}
+
+@media only screen and (max-width: 976px) {
+    .carousel-caption {
+        top: 6%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .carousel-caption {
+        top: 6%;
+    }
+}
+
+@media only screen and (max-width: 764px) {
+    .carousel-caption {
+        top: 4.5%;
+        left: -49%;
+    }
+}
+
+@media only screen and (max-width: 468px) {
+    .carousel-caption {
+        top: 4%;
+        left: -45%;
+    }
+}
+
+@media (min-width: 768px) {
+    /* show 3 items */
+    .carousel-inner .active, .carousel-inner .active+.carousel-item, .carousel-inner .active+.carousel-item+.carousel-item, .carousel-inner .active+.carousel-item+.carousel-item+.carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left), .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item, .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item, .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item+.carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next, .carousel-inner .carousel-item-prev {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .active.carousel-item-left+.carousel-item-next.carousel-item-left, .carousel-item-next.carousel-item-left+.carousel-item, .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item, .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item, .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be abso position for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-item-right+.carousel-item-prev.carousel-item-right, .carousel-item-prev.carousel-item-right+.carousel-item, .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item, .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item, .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+#lalala .jumbotron {
+    background-color: white !important;
+    border-radius: 2px;
+}
+
+#lalala .jumbotron p {
+    padding: 5%;
+}
+
+#review .container {
+    margin-bottom: 10%;
 }
