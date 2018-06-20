@@ -1,0 +1,59 @@
+/* GLOBAL STYLES */
+
+html {
+    height: auto;
+    width: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 60px;
+    background-color: #F2F2F2;
+}
+
+.container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@media only screen and (max-width: 979px) {
+    body {
+        padding-top: 0px;
+    }
+}
+
+.logo :hover, nav a :hover, .login:hover {
+    filter: brightness(500%);
+}
+
+header a {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav a {
+    font-size: 20px;
+}
+
+.search {
+    margin-right: 3%;
+}
+
+.login {
+    filter: brightness(70%);
+}
+
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.featurette-divider {
+    margin: 5rem 0;
+    /* Space out the Bootstrap <hr> more */
+}
+
+footer p {
+    margin-bottom: 8%;
+}
