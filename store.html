@@ -33,7 +33,7 @@
                         <a class="nav-link" href="store.html">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="sample.html">About</a>
                     </li>
                 </ul>
                 <a class="navbar-brand login" href="#"><img src="./img/login.png">&nbsp;LOG IN</a>
@@ -42,12 +42,12 @@
     </header>
 
     <div class="container">
-        <div class="row searchbar">
-            <form class="mx-2 my-auto d-inline w-100">
+        <div class="row searchbar d-flex justify-content-center">
+            <form class="mx-2 my-auto d-inline w-50">
                 <div class="input-group">
                     <input type="text" id="searchBox" class="form-control border border-right-0 typeahead" placeholder="Search for Games">
                     <span class="input-group-append">
-                <button class="btn btn-outline-secondary border border-left-0 " type="button" >
+                <button class="btn btn-outline-secondary border border-left-0 " type="button" name="search-button">
                     <i class="fa fa-search"></i>
                 </button>
                 </span>
@@ -154,7 +154,7 @@
                                         <h5 class="card-title">Detroit: Become Human</h5>
                                         <div class="box float-right">1899 NT$</div>
                                     </div>
-                                </a>Forza Horizon 4
+                                </a>
                         </div>
 
                         <div class="card col-lg-4 col-md-6 col-sm-12" id="forza horizon 4">
@@ -200,23 +200,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script>
-        jQuery(document).ready(function() {
-            $('#searchBox').on('keyup', function() {
-                var query = $(this).val().toLowerCase();
-                if (query) {
-                    $('.card').each(function() {
-                        $(this).hide();
-                    });
-                    $("div[id*='" + query + "']").show();
-                } else {
-                    $('.card').each(function() {
-                        $(this).show();
-                    });
-                }
-            });
-        });
-    </script>
+
 </body>
 
 </html>

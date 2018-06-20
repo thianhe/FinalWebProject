@@ -14,9 +14,7 @@ body {
     background-color: #F2F2F2;
 }
 
-.container {
-    padding: 0 !important;
-}
+.container {}
 
 @media only screen and (max-width: 979px) {
     body {
@@ -63,10 +61,6 @@ footer p {
     margin-top: 5%;
 }
 
-.la {
-    margin-top: 5%;
-}
-
 @media only screen and (max-width: 976px) {
     .jumbotron {
         margin-top: 15%;
@@ -91,20 +85,15 @@ footer p {
     }
 }
 
-.row {
-    margin-top: 50px;
+ul.nav-pills {
+    position: fixed;
 }
 
-section {
-    padding-top: 50px;
-    margin-top: -50px;
+div.col-8 div {
+    height: 500px;
 }
 
-ul {
-    border-style: solid;
-    border-color: #ccc;
-    border-width: 1px;
-    border-radius: 4px;
-    margin-top: 20px;
-    width: 20%;
+.nav-pills {
+    margin-top: 3%;
+    background-color: white !important;
 }
