@@ -16,7 +16,6 @@ body {
 
 .container {
     padding: 0 !important;
-    margin: 0 !important;
 }
 
 @media only screen and (max-width: 979px) {
@@ -56,4 +55,56 @@ nav a {
 
 footer p {
     margin-bottom: 8%;
+}
+
+/*jumbotron*/
+
+.jumbotron {
+    margin-top: 5%;
+}
+
+.la {
+    margin-top: 5%;
+}
+
+@media only screen and (max-width: 976px) {
+    .jumbotron {
+        margin-top: 15%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .jumbotron {
+        margin-top: 20%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .jumbotron {
+        margin-top: 20%;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .jumbotron {
+        margin-top: 25%;
+    }
+}
+
+.row {
+    margin-top: 50px;
+}
+
+section {
+    padding-top: 50px;
+    margin-top: -50px;
+}
+
+ul {
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px;
+    border-radius: 4px;
+    margin-top: 20px;
+    width: 20%;
 }
