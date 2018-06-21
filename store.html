@@ -47,9 +47,9 @@
                 <div class="input-group">
                     <input type="text" id="searchBox" class="form-control border border-right-0 typeahead" placeholder="Search for Games">
                     <span class="input-group-append">
-                <button class="btn btn-outline-secondary border border-left-0 " type="button" name="search-button">
-                    <i class="fa fa-search"></i>
-                </button>
+                        <a href="#" class="btn btn-outline-secondary border border-left-0" id="submit">
+                            <i class="fa fa-search"></i>
+                        </a>
                 </span>
                 </div>
             </form>
@@ -60,28 +60,31 @@
                     <ul class="list dropdown">
                         <li> <a href="#">PLATFORMS</a>
                             <ul class="item item1">
-                                <li> <a href="#">PC</a></li>
+                                <li> <a class="filter" href="store.html?platforms=PC">PC</a></li>
                             </ul>
                         </li>
                         <li> <a href="#" class="dropdown">PRICE</a>
                             <ul class="item item2">
-                                <li> <a href="#">> 299NT$</a></li>
-                                <li> <a href="#">300 - 599NT$</a></li>
-                                <li> <a href="#">600 - 1789NT$</a></li>
-                                <li> <a href="#">1790NT$ > </a></li>
+                                <li>
+                                    <a class="price" min="1" max="299" href="#">
+                                        < 299NT$</a>
+                                </li>
+                                <li> <a class="price" min="300" max="599" href="#">300 - 599NT$</a></li>
+                                <li> <a class="price" min="600" max="1789" href="#">600 - 1789NT$</a></li>
+                                <li> <a class="price" min="1790" max="99999" href="#">1790NT$ > </a></li>
                             </ul>
                         </li>
                         <li> <a href="#" class="dropdown">GENRE</a>
                             <ul class="item item3">
-                                <li><a href="#">Action / Adventure</a></li>
-                                <li> <a href="#">Shooter</a></li>
-                                <li> <a href="#">RPG</a></li>
-                                <li> <a href="#">Simulation</a></li>
-                                <li> <a href="#">Survival-horror</a></li>
-                                <li> <a href="#">Strategy</a></li>
-                                <li> <a href="#">Family</a></li>
-                                <li> <a href="#">Sport</a></li>
-                                <li> <a href="#">Racing</a></li>
+                                <li> <a class="genre" genre="action" href="#">Action / Adventure</a></li>
+                                <li> <a class="genre" genre="shooter" href="#">Shooter</a></li>
+                                <li> <a class="genre" genre="rpg" href="#">RPG</a></li>
+                                <li> <a class="genre" genre="simulation" href="#">Simulation</a></li>
+                                <li> <a class="genre" genre="survival" href="#">Survival-horror</a></li>
+                                <li> <a class="genre" genre="strategy" href="#">Strategy</a></li>
+                                <li> <a class="genre" genre="family" href="#">Family</a></li>
+                                <li> <a class="genre" genre="sport" href="#">Sport</a></li>
+                                <li> <a class="genre" genre="racing" href="#">Racing</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -97,92 +100,92 @@
                             </select>
                     </div>
                     <div class="row">
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="arktika">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="arktika">
                             <a href="#">
                                     <img class="card-img-top" src="./img/arktika.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Arktika</h5>
-                                        <div class="box float-right">399 NT$</div>
+                                        <div class="box float-right">NT$ 399.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="battlefield 4">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="battlefield 4">
                             <a href="#">
                                     <img class="card-img-top" src="./img/battlefield.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Battlefield 4</h5>
-                                        <div class="box float-right">599 NT$</div>
+                                        <div class="box float-right">NT$ 599.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="call of duty infinite warfare">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="call of duty infinite warfare">
                             <a href="#">
                                     <img class="card-img-top" src="./img/callofduty.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Call of Duty: Infinite Warfare</h5>
-                                        <div class="box float-right">599 NT$</div>
+                                        <div class="box float-right">NT$ 599.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="civilization vi">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="civilization vi">
                             <a href="#">
                                     <img class="card-img-top" src="./img/civilization6.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Civilization VI</h5>
-                                        <div class="box float-right">899 NT$</div>
+                                        <div class="box float-right">NT$ 899.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="command conquer">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="command conquer">
                             <a href="#">
                                     <img class="card-img-top" src="./img/commandandconquer.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Command & Conquer</h5>
-                                        <div class="box float-right">239 NT$</div>
+                                        <div class="box float-right">NT$ 239.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="detroit become human">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="detroit become human">
                             <a href="#">
                                     <img class="card-img-top" src="./img/detroit.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Detroit: Become Human</h5>
-                                        <div class="box float-right">1899 NT$</div>
+                                        <div class="box float-right">NT$ 1899.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="forza horizon 4">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="forza horizon 4">
                             <a href="#">
                                     <img class="card-img-top" src="./img/forzahorizon4.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Forza Horizon 4</h5>
-                                        <div class="box float-right">799 NT$</div>
+                                        <div class="box float-right">NT$ 799.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="racing">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="racing">
                             <a href="#">
                                     <img class="card-img-top" src="./img/racing.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Racing</h5>
-                                        <div class="box float-right">1299 NT$</div>
+                                        <div class="box float-right">NT$ 1299.00</div>
                                     </div>
                                 </a>
                         </div>
 
-                        <div class="card col-lg-4 col-md-6 col-sm-12" id="sea of theives">
+                        <div class="game card col-lg-4 col-md-6 col-sm-12" id="sea of theives">
                             <a href="#">
                                     <img class="card-img-top" src="./img/seaoftheives.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">Sea of Theives</h5>
-                                        <div class="box float-right">1099 NT$</div>
+                                        <div class="box float-right">NT$ 1099.00</div>
                                     </div>
                                 </a>
                         </div>
@@ -190,16 +193,40 @@
                 </div>
             </div>
         </div>
-
-        <hr class="featurette-divider">
-        <footer class="container">
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; NTUT &middot; CSIE &middot; 2018</p>
-        </footer>
+        <div class="row float-right">
+            <div class="col-12">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
+    <hr class="featurette-divider">
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; NTUT &middot; CSIE &middot; 2018</p>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="./js/controller.js"></script>
 
 </body>
 

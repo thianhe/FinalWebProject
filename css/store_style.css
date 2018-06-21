@@ -193,6 +193,7 @@ footer p {
 .card {
     height: 110%;
     width: 490px;
+    display: none;
 }
 
 .card a {

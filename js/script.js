@@ -7,23 +7,6 @@ $(document).ready(function() {
         $select2.html($options.filter('[value="' + this.value + '"]'));
     }).trigger('change');
 
-    $('#searchBox').on('keyup', function(event) {
-        if (event.keyCode === 13) {
-            $('input[name = search-button]').click();
-            return false;
-        }
-        var query = $(this).val().toLowerCase();
-        if (query) {
-            $('.card').each(function() {
-                $(this).hide();
-            });
-            $("div[id*='" + query + "']").show();
-        } else {
-            $('.card').each(function() {
-                $(this).show();
-            });
-        }
-    });
 
     $('#carouselExample').on('slide.bs.carousel', function(e) {
 

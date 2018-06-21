@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Untitled Document</title>
+    <style>
+        body {
+            background-color: #f6f6f6;
+            width: 400px;
+            margin: 20px auto;
+            font: normal 13px/100% sans-serif;
+            color: #444;
+        }
+
+        div {
+            display: none;
+            padding: 10px;
+            border-width: 0 1px 1px 0;
+            border-style: solid;
+            border-color: #fff;
+            box-shadow: 0 1px 1px #ccc;
+            margin-bottom: 5px;
+            background-color: #f1f1f1;
+        }
+
+        .totop {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+        }
+
+        .totop a {
+            display: none;
+        }
+
+        a,
+        a:visited {
+            color: #33739E;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        #loadMore {
+            padding: 10px;
+            text-align: center;
+            background-color: #33739E;
+            color: #fff;
+            border-width: 0 1px 1px 0;
+            border-style: solid;
+            border-color: #fff;
+            box-shadow: 0 1px 1px #ccc;
+            transition: all 600ms ease-in-out;
+            -webkit-transition: all 600ms ease-in-out;
+            -moz-transition: all 600ms ease-in-out;
+            -o-transition: all 600ms ease-in-out;
+        }
+
+        #loadMore:hover {
+            background-color: #fff;
+            color: #33739E;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Content 1 </div>
+    <div>Content 2</div>
+    <div>Content 3</div>
+    <div>Content 4</div>
+    <div>Content 5</div>
+    <div>Content 6</div>
+    <div>Content 7</div>
+    <div>Content 8</div>
+    <div>Content 9</div>
+    <div>Content 10</div>
+    <div>Content 11</div>
+    <div>Content 12</div>
+    <div>Content 13</div>
+    <div>Content 14</div>
+    <div>Content 15</div>
+    <div>Content 16</div>
+    <div>Content 17</div>
+    <div>Content 18</div>
+    <div>Content last 19</div>
+    <a href="#" id="loadMore">Load More</a>
+    <p class="totop"> <a href="#top">Back to top</a> </p>
+    <script>
+        (function() {
+            var divElements = [].slice.call(document.querySelectorAll("div"));
+            var loadMore = document.querySelector('#loadMore');
+            var divNumber = 6;
+            var counter = 0;
+            for (var i = 0; i < divElements.length; i++) {
+                divElements[i].style.display = 'none';
+            }
+            loadMore.addEventListener('click', function(e) {
+                e.preventDefault();
+                for (var i = 0; i < divNumber; i++) {
+
+                    if (i < divElements.length) {
+                        divElements[i].style.display = 'block';
+                    }
+
+                    if (i >= divElements.length) {
+                        loadMore.innerHTML = "Load Completed";
+                        return;
+                    }
+
+                }
+                divElements.splice(0, divNumber);
+
+            });
+        })();
+    </script>
+</body>
+
+</html>
