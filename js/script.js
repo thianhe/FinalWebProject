@@ -27,8 +27,17 @@ $(document).ready(function() {
             }
         }
     });
+    /*login button*/
+    var modal_lv = 0;
+    $('.modal').on('shown.bs.modal', function(e) {
+        $('.modal-backdrop:last').css('zIndex', 1051 + modal_lv);
+        $(e.currentTarget).css('zIndex', 1052 + modal_lv);
+        modal_lv++
+    });
 
-    /*firebase*/
+    $('.modal').on('hidden.bs.modal', function(e) {
+        modal_lv--
+    });
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyDHLiFLoabQKjEizi0s6OSlpvrqA3iMBGI",
@@ -39,73 +48,57 @@ $(document).ready(function() {
         messagingSenderId: "487451576900"
     };
     firebase.initializeApp(config);
-
-    var firebase = require('firebase');
-    var firebaseui = require('firebaseui');
-
-    ui.start('#firebaseui-auth-container', {
-        signInOptions: [
-            firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
+    document.getElementById("btnLogin").addEventListener('click', e => {
+        // Get email and pass
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.signInWithEmailAndPassword(email, pass);
+        promise.catch(e => alert(e.message));
+        console.log(promise);
     });
 
-    ui.start('#firebaseui-auth-container', {
-        signInOptions: [{
-            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            requireDisplayName: false
-        }]
+    // Add signup event
+    document.getElementById("btnSignup").addEventListener('click', e => {
+        // Get email and pass
+
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.createUserWithEmailAndPassword(email, pass);
+        promise.catch(e => alert(e.message));
     });
 
-    ui.start('#firebaseui-auth-container', {
-        signInOptions: [
-            // List of OAuth providers supported.
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        ],
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+        alert('Logout Successfully!');
     });
-    ui.start('#firebaseui-auth-container', {
-        signInOptions = [{
-            provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            scopes: [
-                'https://www.googleapis.com/auth/plus.login'
-            ],
-            customParameters: {
-                // Forces account selection even when one account
-                // is available.
-                prompt: 'select_account'
-            }
-        }, ]
+    //Add a realtime listener
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+            console.log(firebaseUser);
+            btnLogout.classList.remove('dissapear');
+            btnLogin.classList.add('dissapear');
+            btnSignup.classList.add('dissapear');
+            txtEmail.classList.add('dissapear');
+            txtPassword.classList.add('dissapear');
+            document.getElementById('welcomeDiv').style.display = "block";
+
+
+        } else if (!firebaseUser) {
+            console.log('not logged in');
+            btnLogout.classList.add('dissapear');
+            btnLogin.classList.remove('dissapear');
+            btnSignup.classList.remove('dissapear');
+            txtEmail.classList.remove('dissapear');
+            txtPassword.classList.remove('dissapear');
+
+            document.getElementById('welcomeDiv').style.display = "none";
+
+
+        }
     });
 
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    var uiConfig = {
-        callbacks: {
-            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                // User successfully signed in.
-                // Return type determines whether we continue the redirect automatically
-                // or whether we leave that to developer to handle.
-                return true;
-            },
-            uiShown: function() {
-                // The widget is rendered.
-                // Hide the loader.
-                document.getElementById('loader').style.display = 'none';
-            }
-        },
-        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-        signInFlow: 'popup',
-        signInSuccessUrl: '<url-to-redirect-to-on-success>',
-        signInOptions: [
-            // Leave the lines as is for the providers you want to offer your users.
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-            firebase.auth.GithubAuthProvider.PROVIDER_ID,
-            firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            firebase.auth.PhoneAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: '<your-tos-url>'
-    };
-    // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
 });
