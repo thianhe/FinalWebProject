@@ -42,8 +42,8 @@
                 </ul>
 
                 <form class="form-inline mt-4 mt-md-0 search">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search for games" aria-label="Search">
-                    <button class="btn btn-outline-light my-2 my-sm-0 " type="submit">Search</button>
+                    <input id="searchBox" class="form-control mr-sm-2" type="text" placeholder="Search for games" aria-label="Search">
+                    <a id="submit" href="#" class="btn btn-flat btn-danger btn-outline-light">Search</a>
                 </form>
                 <div type="" class="navbar-brand login" data-toggle="modal" data-target="#modal-a"><img src="./img/login.png">&nbsp;LOG IN
                 </div>
@@ -177,7 +177,12 @@
                                 <h1>Review</h1>
                                 <div class="jumbotron jumbotron-fluid">
                                     <div class="container">
-                                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputComment" aria-describedby="emailHelp" placeholder="Write comment">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Post</button>
+                                        </form>
                                     </div>
                                 </div><br>
                             </div>
