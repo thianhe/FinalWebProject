@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var email = txtEmail.value;
     var $select1 = $('#select1'),
         $select2 = $('#select2'),
         $options = $select2.find('option');
@@ -63,12 +64,15 @@ $(document).ready(function() {
         messagingSenderId: "487451576900"
     };
     firebase.initializeApp(config);
-    var dbRef = fireabase.database().ref();
-    // REGISTER DOM ELEMENTS
+    var dbRef = firebase.database().ref();
 
-    var $messageField = $('#messageInput');
-    var $nameField = $('#nameInput');
-    var $messageList = $('#example-messages');
+    // CREATE A REFERENCE TO FIREBASE
+    var messagesRef = firebase.database().ref();
+
+    // REGISTER DOM ELEMENTS
+    var messageField = $('#messageInput');
+    var nameField = $('#txtEmail');
+    var messageList = $('#example-messages');
 
     document.getElementById("btnLogin").addEventListener('click', e => {
         // Get email and pass
@@ -107,6 +111,20 @@ $(document).ready(function() {
             txtEmail.classList.add('dissapear');
             txtPassword.classList.add('dissapear');
             document.getElementById('welcomeDiv').style.display = "block";
+            $("#commentSubmit").on('click', function(event) {
+
+                //FIELD VALUES
+                var username = firebase.auth().currentUser.email;
+                var message = messageField.val();
+
+                //SAVE DATA TO FIREBASE AND EMPTY FIELD
+                messagesRef.push({
+                    name: username,
+                    text: message
+                });
+                messageField.val('');
+
+            });
 
         } else if (!firebaseUser) {
             console.log('not logged in');
@@ -118,18 +136,68 @@ $(document).ready(function() {
             document.getElementById('welcomeDiv').style.display = "none";
         }
     });
-
+    /*var $userField = $('#txtEmail');
+    var $commentField = $('#commentInput');
+    var $commentList = $('#commentArea');
     // messages
-    $messageField.keypress(funcion(e) {
+    document.getElementById("#post").addEventListener('click', e => {
         if (e.keyCode == 13) {
-            var username = $nameField.val();
-            var message = $messageField.val();
-            console.log(username);
-            console.log(message);
+            //FIELD VALUES
+            var useremail = $userField.val();
+            var message = $commentField.val();
+            console.log(useremail)
+            console.log(message)
+
+            //SAVE DATA TO FIREBASE AND EMPTY FIELD
+            dbRef.push({
+                email: email,
+                text = message
+            });
+            $commentField.val('');
         }
+    });
 
-        //SAVE DATA TO FIREBASE AND EMPTY FIELD
+    dbRef.limitToLast(20).on('child_added', function(snapshot) {
+        //Get data
+        var data = snapshot.val();
+        var username = data.name || "anonymous";
+        var message = data.text;
+
+        //CREATE ELEMENTS
+        var $messageElement = $('#comment');
+
+        $nameElement.text(username);
+        $messageElement.text(message).prepend($nameElement);
+
+        //ADD $messageElement
+        $messageList.append($messageElement);
+        //SCROLL TO BOTTOM OF MESSAGE lIST
+        $messageList[0].scrollTop = $messageList[0].scrollHeight;
+    });*/
 
 
-    })
+
+
+    // LISTEN FOR KEYPRESS EVENT
+
+
+    // Add a callback that is triggered for each chat message.
+    messagesRef.limitToLast(10).on('child_added', function(snapshot) {
+        //GET DATA
+        var data = snapshot.val();
+        var username = data.name || "anonymous";
+        var message = data.text;
+
+        //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+        var messageElement = $("<li>");
+        var nameElement = $("<strong class='example-chat-username'></strong>")
+        nameElement.text(username);
+        messageElement.text(message).prepend(nameElement);
+
+        //ADD MESSAGE
+        messageList.append(messageElement)
+
+        //SCROLL TO BOTTOM OF MESSAGE LIST
+        messageList[0].scrollTop = messageList[0].scrollHeight;
+    });
 });
