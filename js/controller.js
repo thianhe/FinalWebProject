@@ -12,21 +12,23 @@ $(document).ready(function() {
     var value = "",
         genre = "",
         min = 0,
-        max = 99999;
+        max = 99999,
+        filterType = ''
+    ;
     var url = decodeURIComponent(window.location.search.substring(1));
     var variables = url.split('&');
 
     //Database: id, name, price, category, imagepath, sellingvolume
     const gameList = [
         ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20, 'arktika.html'],
-        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30,'battlefield.html'],
-        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'rpg', './img/callofduty.jpg', 40,'Call of Duty_infinitewarefare.html'],
-        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50,'Civilzation.html'],
-        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60,'command_conquer.html'],
-        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70,'Detroit.html'],
+        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30, 'battlefield.html'],
+        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'rpg', './img/callofduty.jpg', 40, 'Call of Duty_infinitewarefare.html'],
+        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50, 'Civilzation.html'],
+        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60, 'command_conquer.html'],
+        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/forzahorizon4.jpg', 70, 'Detroit.html'],
         ['forza horizon 4', 'Forza Horizon 4', 799, 'family', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
-        ['dark souls remastered', 'Dark souls remastered', 1299, 'sport', './img/darksoul.jpg', 90],
-        ['sea of theives', 'Sea of Theives', 1099, 'racing', './img/seaoftheives.jpg', 100,'sea_of_theive.html']
+        ['racing', 'Racing', 1299, 'sport', './img/racing.jpg', 90, ''],
+        ['sea of theives', 'Sea of Theives', 1099, 'racing', './img/seaoftheives.jpg', 100, 'sea_of_thieve.html']
     ];
 
     //Sorting use compartor function
@@ -75,6 +77,7 @@ $(document).ready(function() {
                         <img class="card-img-top" src="` + game[IMAGE_PATH] + `" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">` + game[NAME] + `</h5>
+
                             <div class="box float-right">NT$ ` + game[PRICE] + `</div>
                             <div class="box float-right" style="background-color: peru">` + game[SELLING_VOLUME] + ` SOLD</div>
                         </div>
@@ -110,7 +113,7 @@ $(document).ready(function() {
             $('#submit').trigger("click");
         }
         value = $(this).val().toLowerCase();
-        filter();
+        // filter();
     });
 
     $(".price").on('click', function() {
