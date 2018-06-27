@@ -11,16 +11,13 @@ $(document).ready(function() {
 
     var value = "",
         genre = "",
-        min = 0,
+        min = 1,
         max = 99999,
         pages = 1;
     filterType = '',
         filteredGame = [],
         url = decodeURIComponent(window.location.search.substring(1));
     var variables = url.split('&');
-
-
-
     //Database: id, name, price, category, imagepath, sellingvolume
     const gameList = [
         ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20, 'arktika.html'],
@@ -64,6 +61,10 @@ $(document).ready(function() {
         return 0;
     }
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     function searchURL() {
         return "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre + "&pages=" + pages;
     }
@@ -96,15 +97,43 @@ $(document).ready(function() {
     }
     /* ********** DECLARETION END ********** */
     for (var i = 0; i < variables.length; i++) {
+        var html = ''
         var parameter = variables[i].split('=');
         if (parameter[0] == 'value' && parameter[1] != undefined) {
             value = parameter[1];
         } else if (parameter[0] == 'min' && parameter[1] != undefined) {
             min = parseInt(parameter[1]);
+            if (min != 1) {
+                //Breadcrumb
+                html = `
+                        <li class="breadcrumb-item">
+                           Min Price ` + min + `
+                        </li>
+                    `;
+                $('#breadcrumb').append(html);
+            }
         } else if (parameter[0] == 'max' && parameter[1] != undefined) {
             max = parseInt(parameter[1]);
+            if (max != 99999) {
+                //Breadcrumb
+                html = `
+                        <li class="breadcrumb-item">
+                           Max Price ` + max + `
+                        </li>
+                    `;
+                $('#breadcrumb').append(html);
+            }
         } else if (parameter[0] == 'genre' && parameter[1] != undefined) {
             genre = parameter[1];
+            if (genre) {
+                //Breadcrumb
+                html = `
+                        <li class="breadcrumb-item">
+                           ` + capitalizeFirstLetter(genre) + `
+                        </li>
+                    `;
+                $('#breadcrumb').append(html);
+            }
         } else if (parameter[0] == 'pages' && parameter[1] != undefined) {
             pages = parameter[1];
         }
