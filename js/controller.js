@@ -25,7 +25,7 @@ $(document).ready(function() {
         ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60,'command_conquer.html'],
         ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70,'Detroit.html'],
         ['forza horizon 4', 'Forza Horizon 4', 799, 'family', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
-        ['dark souls remastered', 'Dark souls remastered', 1299, 'sport', './img/darksoul.jpg', 90],
+        ['dark souls remastered', 'Dark souls remastered', 1299, 'sport', './img/darksoul.jpg', 90,'darksoul.html'],
         ['sea of theives', 'Sea of Theives', 1099, 'racing', './img/seaoftheives.jpg', 100,'sea_of_theive.html']
     ];
 
