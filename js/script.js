@@ -28,9 +28,7 @@ $(document).ready(function() {
         }
     });
     /*search function*/
-
     var value = "";
-
     $('#searchBox').on('keyup keypress', function(event) {
         value = $(this).val().toLowerCase();
         if (event.keyCode === 10 || event.keyCode === 13) {
@@ -65,6 +63,13 @@ $(document).ready(function() {
         messagingSenderId: "487451576900"
     };
     firebase.initializeApp(config);
+    var dbRef = fireabase.database().ref();
+    // REGISTER DOM ELEMENTS
+
+    var $messageField = $('#messageInput');
+    var $nameField = $('#nameInput');
+    var $messageList = $('#example-messages');
+
     document.getElementById("btnLogin").addEventListener('click', e => {
         // Get email and pass
         const email = txtEmail.value;
@@ -103,7 +108,6 @@ $(document).ready(function() {
             txtPassword.classList.add('dissapear');
             document.getElementById('welcomeDiv').style.display = "block";
 
-
         } else if (!firebaseUser) {
             console.log('not logged in');
             btnLogout.classList.add('dissapear');
@@ -111,10 +115,21 @@ $(document).ready(function() {
             btnSignup.classList.remove('dissapear');
             txtEmail.classList.remove('dissapear');
             txtPassword.classList.remove('dissapear');
-
             document.getElementById('welcomeDiv').style.display = "none";
-
-
         }
     });
+
+    // messages
+    $messageField.keypress(funcion(e) {
+        if (e.keyCode == 13) {
+            var username = $nameField.val();
+            var message = $messageField.val();
+            console.log(username);
+            console.log(message);
+        }
+
+        //SAVE DATA TO FIREBASE AND EMPTY FIELD
+
+
+    })
 });

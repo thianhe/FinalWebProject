@@ -26,7 +26,7 @@
             <a class="navbar-brand logo nav-link" href="index.html"><img src="./img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                    </button>
+                </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto navb">
                     <li class="nav-item">
@@ -50,27 +50,30 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Sign in to Play</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
                 <div class="modal-body">
-                    <div class="my-3 ">
-                        <input id="txtEmail" type="email" placeholder="Email" class="form-control"></div>
-                    <div id="welcomeDiv" style="display:none;">
-                        <h1>Welcome back!</h1></div>
                     <div class="my-3">
-                        <input id="txtPassword" type="password" placeholder="Password" class="form-control"></div>
+                        <input id="txtEmail" type="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div id="welcomeDiv" style="display:none;">
+                        <h1>Welcome back!</h1>
+                    </div>
+                    <div class="my-3">
+                        <input id="txtPassword" type="password" placeholder="Password" class="form-control">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button id="btnLogin" class="btn btn-action">
-                        Log in
-                    </button>
+                            Log in
+                        </button>
                     <button id="btnSignup" class="btn btn-secondary">
-                        Sign Up
-                    </button>
+                            Sign Up
+                        </button>
                     <button id="btnLogout" class="btn btn-action dissapear">
-                        Log out
-                    </button>
+                            Log out
+                        </button>
                 </div>
             </div>
         </div>
@@ -81,10 +84,10 @@
                 <div class="input-group">
                     <input type="text" id="searchBox" class="form-control border border-right-0 typeahead" placeholder="Search for Games">
                     <span class="input-group-append">
-                        <a href="#" class="btn btn-outline-secondary border border-left-0" id="submit" onclick="click()">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </span>
+                            <a href="#" class="btn btn-outline-secondary border border-left-0" id="submit" onclick="click()">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </span>
                 </div>
             </form>
         </div>
@@ -109,7 +112,8 @@
                                 <li> <a class="price" min="1790" max="99999" href="#">>1790NT$  </a></li>
                             </ul>
                         </li>
-                        <li> <a href="#" class="dropdown">GENRE</a>
+                        <li>
+                            <a href="#" class="dropdown">GENRE</a>
                             <ul class="item item3">
                                 <li> <a class="genre" genre="action" href="#">Action / Adventure</a></li>
                                 <li> <a class="genre" genre="shooter" href="#">Shooter</a></li>
@@ -128,15 +132,13 @@
             <div class="col-lg-9">
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- <div class="col-lg-12 col-md-12 col-sm-12"> -->
                         <ol class="breadcrumb" style="margin-top: 10px">
                             <li class="breadcrumb-item"><a href="#">Store</a></li>
                             <li class="breadcrumb-item"><a href="#">Library</a></li>
                         </ol>
-                        <!-- </div>      -->
                     </div>
                     <div class="row">
-                        <select class="form-control dropdown2 float-left col-lg-3 col-sm-12 col-xs-12" name="select1" id="DropdownSelect">
+                        <select class="form-control dropdown2 float-left col-lg-3 col-sm-12 col-xs-12" name="select1" id="dropdownSelect">
                                 <option value="1">Best sellers</option>
                                 <option value="2">Price high to low</option>
                                 <option value="3">Price low to high</option>
@@ -152,16 +154,16 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
+                            <a class="page-link previous" href="#" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#" page=1>1</a></li>
+                        <li class="page-item"><a class="page-link" href="#" page=2>2</a></li>
+                        <li class="page-item"><a class="page-link" href="#" page=3>3</a></li>
                         <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
+                            <a class="page-link next" href="#" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -180,7 +182,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

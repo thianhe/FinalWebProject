@@ -13,24 +13,27 @@ $(document).ready(function() {
         genre = "",
         min = 0,
         max = 99999,
+        page = 1,
         filterType = '';
     var url = decodeURIComponent(window.location.search.substring(1));
     var variables = url.split('&');
+    var filteredGame = [];
+
 
     //Database: id, name, price, category, imagepath, sellingvolume
     const gameList = [
         ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20, 'arktika.html'],
-        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30,'battlefield.html'],
-        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'shooter', './img/callofduty.jpg', 40,'Call of Duty_infinitewarefare.html'],
-        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50,'Civilzation.html'],
-        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60,'command_conquer.html'],
-        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70,'Detroit.html'],
+        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30, 'battlefield.html'],
+        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'shooter', './img/callofduty.jpg', 40, 'Call of Duty_infinitewarefare.html'],
+        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50, 'Civilzation.html'],
+        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60, 'command_conquer.html'],
+        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70, 'Detroit.html'],
         ['forza horizon 4', 'Forza Horizon 4', 799, 'racing sport', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
-        ['dark souls remastered', 'Dark souls remastered', 1299, 'action survival', './img/darksoul.jpg', 90,'darksoul.html'],
-        ['sea of theives', 'Sea of Theives', 1099, 'survival simulation', './img/seaoftheives.jpg', 100,'sea_of_theive.html'],
-        ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.jpg', 110,'HeroineAnthemZERO.html'],
-        ['rise of the Tomb Raider', 'Rise of the Tomb Raider', 799, 'survival action', './img/Raider.jpg', 80,'RiseOfTheTombRaider.html'],
-        ['Clash of Cards', 'Clash of Cardsr', 699, 'strategy', './img/Clash of Cards.jpg', 40,'ClashOfCards.html'],
+        ['dark souls remastered', 'Dark souls remastered', 1299, 'action survival', './img/darksoul.jpg', 90, 'darksoul.html'],
+        ['sea of theives', 'Sea of Theives', 1099, 'survival simulation', './img/seaoftheives.jpg', 100, 'sea_of_theive.html'],
+        ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.jpg', 110, 'HeroineAnthemZERO.html'],
+        ['rise of the Tomb Raider', 'Rise of the Tomb Raider', 799, 'survival action', './img/Raider.jpg', 80, 'RiseOfTheTombRaider.html'],
+        ['Clash of Cards', 'Clash of Cardsr', 699, 'strategy', './img/Clash of Cards.jpg', 40, 'ClashOfCards.html'],
     ];
 
     //Sorting use compartor function
@@ -52,26 +55,35 @@ $(document).ready(function() {
         return 0;
     }
 
-    function filter() {
-        var result = [];
-        gameList.forEach(function(game) {
-            if (game[ID].includes(value) && game[PRICE] >= min && game[PRICE] <= max && game[GENRE].includes(genre)) {
-                result.push(game[0]);
-            }
-        });
-
-        $('.card').each(function() {
-            $(this).hide();
-        });
-        result.forEach(function(element) {
-            $("div[id*='" + element + "']").show();
-        });
+    function searchURL() {
+        return "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre + "&page=" + page;
     }
-    /* ********** DECLARETION END ********** */
 
+    //Paging
+    function paginate(array, page_size, page_number) {
+        --page_number;
+        return array.slice(page_number * page_size, (page_number + 1) * page_size);
+    }
+
+    $('.previous').on('click', function(event) {
+        if (page === 1) {
+            page = page;
+        } else {
+            page--;
+        }
+        $(this).attr("href", searchURL());
+    });
+    $('.next').on('click', function(event) {
+        if (page === 3) {
+            page = page;
+        } else {
+            page++;
+        }
+        $(this).attr("href", searchURL());
+    });
     /* Generate game card */
     function generateGameCard(gameArray) {
-        console.log(gameArray);
+        gameArray = paginate(gameArray, 9, page);
         gameArray.forEach(function(game) {
             var html = `
                 <div class="game card col-lg-4 col-md-6 col-sm-12" id="` + game[ID] + `" style="display: block;">
@@ -86,11 +98,11 @@ $(document).ready(function() {
                     </a>
                 </div>
             `;
-            console.log(html);
             $('#allGame').append(html);
         });
     }
 
+    /* ********** DECLARETION END ********** */
     for (var i = 0; i < variables.length; i++) {
         var parameter = variables[i].split('=');
         if (parameter[0] == 'value' && parameter[1] != undefined) {
@@ -101,52 +113,61 @@ $(document).ready(function() {
             max = parseInt(parameter[1]);
         } else if (parameter[0] == 'genre' && parameter[1] != undefined) {
             genre = parameter[1];
+        } else if (parameter[0] == 'page' && parameter[1] != undefined) {
+            page = parameter[1];
         }
     }
 
     $('#searchBox').val(value);
-    generateGameCard(gameList);
-    filter();
+    //Filter game when page loaded
+    gameList.forEach(function(game) {
+        if (game[ID].includes(value) && game[PRICE] >= min && game[PRICE] <= max && game[GENRE].includes(genre)) {
+            filteredGame.push(game);
+        }
+    });
+    generateGameCard(filteredGame);
 
     $('#searchBox').on('keyup keypress', function(event) {
         if (event.keyCode === 10 || event.keyCode === 13) {
             event.preventDefault();
-            $('#submit').attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre + "&filterType=" + filterType);
+            $('#submit').attr("href", );
             $('#submit').trigger("click");
         }
         value = $(this).val().toLowerCase();
-        // filter();
     });
 
     $(".price").on('click', function() {
         min = $(this).attr("min");
         max = $(this).attr("max");
-        $(this).attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
+        $(this).attr("href", searchURL());
     });
 
     $(".genre").on('click', function() {
         genre = $(this).attr("genre");
-        $(this).attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
+        $(this).attr("href", searchURL());
     });
 
     $('#submit').on('click', function() {
-        $(this).attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
+        $(this).attr("href", searchURL());
     });
 
-    $('#DropdownSelect').on('change', function() {
-        var gameArray;
-        var selected = $('#DropdownSelect option:selected').val();
+    $('#dropdownSelect').on('change', function() {
+        var selected = $('#dropdownSelect option:selected').val();
         if (selected == 1) {
-            gameArray = gameList.sort(sortSoldVolume);
+            filteredGame = filteredGame.sort(sortSoldVolume);
         } else if (selected == 2) {
-            gameArray = gameList.sort(sortPriceDES);
+            filteredGame = filteredGame.sort(sortPriceDES);
         } else if (selected == 3) {
-            gameArray = gameList.sort(sortPriceASC);
-        } else {
-            gameArray = gameList;
+            filteredGame = filteredGame.sort(sortPriceASC);;
         }
 
         $('#allGame').html('');
-        generateGameCard(gameArray);
+        generateGameCard(filteredGame);
     });
+
+    $('.page-link').on('click', function(event) {
+        page = $(this).attr("page");
+        $(this).attr("href", searchURL());
+    });
+
 });
