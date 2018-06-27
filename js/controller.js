@@ -12,7 +12,8 @@ $(document).ready(function() {
     var value = "",
         genre = "",
         min = 0,
-        max = 99999;
+        max = 99999,
+        filterType = '';
     var url = decodeURIComponent(window.location.search.substring(1));
     var variables = url.split('&');
 
@@ -78,6 +79,7 @@ $(document).ready(function() {
                         <img class="card-img-top" src="` + game[IMAGE_PATH] + `" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">` + game[NAME] + `</h5>
+
                             <div class="box float-right">NT$ ` + game[PRICE] + `</div>
                             <div class="box float-right" style="background-color: peru">` + game[SELLING_VOLUME] + ` SOLD</div>
                         </div>
@@ -113,7 +115,7 @@ $(document).ready(function() {
             $('#submit').trigger("click");
         }
         value = $(this).val().toLowerCase();
-        filter();
+        // filter();
     });
 
     $(".price").on('click', function() {
