@@ -20,14 +20,17 @@ $(document).ready(function() {
     //Database: id, name, price, category, imagepath, sellingvolume
     const gameList = [
         ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20, 'arktika.html'],
-        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30, 'battlefield.html'],
-        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'shooter', './img/callofduty.jpg', 40, 'Call of Duty_infinitewarefare.html'],
-        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50, 'Civilzation.html'],
-        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60, 'command_conquer.html'],
-        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70, 'Detroit.html'],
-        ['forza horizon 4', 'Forza Horizon 4', 799, 'racing', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
-        ['dark souls remastered', 'Dark souls remastered', 1299, 'action', './img/darksoul.jpg', 90, 'darksoul.html'],
-        ['sea of theives', 'Sea of Theives', 1099, 'survival', './img/seaoftheives.jpg', 100, 'sea_of_theive.html']
+        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30,'battlefield.html'],
+        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'shooter', './img/callofduty.jpg', 40,'Call of Duty_infinitewarefare.html'],
+        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50,'Civilzation.html'],
+        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60,'command_conquer.html'],
+        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70,'Detroit.html'],
+        ['forza horizon 4', 'Forza Horizon 4', 799, 'racing sport', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
+        ['dark souls remastered', 'Dark souls remastered', 1299, 'action survival', './img/darksoul.jpg', 90,'darksoul.html'],
+        ['sea of theives', 'Sea of Theives', 1099, 'survival simulation', './img/seaoftheives.jpg', 100,'sea_of_theive.html'],
+        ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.jpg', 110,'HeroineAnthemZERO.html'],
+        ['rise of the Tomb Raider', 'Rise of the Tomb Raider', 799, 'survival action', './img/Raider.jpg', 80,'RiseOfTheTombRaider.html'],
+        ['Clash of Cards', 'Clash of Cardsr', 699, 'strategy', './img/Clash of Cards.jpg', 40,'ClashOfCards.html'],
     ];
 
     //Sorting use compartor function
