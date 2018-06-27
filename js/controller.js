@@ -6,7 +6,8 @@ $(document).ready(function() {
         PRICE = 2,
         GENRE = 3,
         IMAGE_PATH = 4,
-        SELLING_VOLUME = 5;
+        SELLING_VOLUME = 5,
+        URL = 6;
 
     var value = "",
         genre = "",
@@ -17,7 +18,7 @@ $(document).ready(function() {
 
     //Database: id, name, price, category, imagepath, sellingvolume
     const gameList = [
-        ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20],
+        ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20, 'arktika.html'],
         ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30],
         ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'rpg', './img/callofduty.jpg', 40],
         ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50],
@@ -70,10 +71,11 @@ $(document).ready(function() {
         gameArray.forEach(function(game) {
             var html = `
                 <div class="game card col-lg-4 col-md-6 col-sm-12" id="` + game[ID] + `" style="display: block;">
-                    <a href="#">
+                    <a href="` + game[URL] + `">
                         <img class="card-img-top" src="` + game[IMAGE_PATH] + `" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">` + game[NAME] + `</h5><br/>
+                            <h5 class="card-title">` + game[NAME] + `</h5>
+
                             <div class="box float-right">NT$ ` + game[PRICE] + `</div>
                             <div class="box float-right" style="background-color: peru">` + game[SELLING_VOLUME] + ` SOLD</div>
                         </div>
@@ -105,8 +107,8 @@ $(document).ready(function() {
     $('#searchBox').on('keyup keypress', function(event) {
         if (event.keyCode === 10 || event.keyCode === 13) {
             event.preventDefault();
-            $('#submit').attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre + "&filterType" + filterType);
-            $('#submit').click();
+            $('#submit').attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre + "&filterType=" + filterType);
+            $('#submit').trigger("click");
         }
         value = $(this).val().toLowerCase();
         filter();
