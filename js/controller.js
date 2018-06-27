@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //Database: keyword, price, category
     const gameList = [
-        ['arktika', 399, 'action'],
+        ['arktika', 399, 'shooter'],
         ['battlefield 4', 599, 'shooter'],
         ['call of duty infinite warfare', 599, 'rpg'],
         ['civilization vi', 899, 'simulation'],
