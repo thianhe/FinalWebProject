@@ -1,16 +1,12 @@
 $(document).ready(function() {
-    //Database: keyword, price, category
-    const gameList = [
-        ['arktika', 399, 'action'],
-        ['battlefield 4', 599, 'shooter'],
-        ['call of duty infinite warfare', 599, 'rpg'],
-        ['civilization vi', 899, 'simulation'],
-        ['command conquer', 239, 'survival'],
-        ['detroit become human', 1899, 'strategy'],
-        ['forza horizon 4', 799, 'family'],
-        ['racing', 1299, 'sport'],
-        ['sea of theives', 1099, 'racing']
-    ];
+    //Database column name
+    const
+        ID = 0,
+        NAME = 1,
+        PRICE = 2,
+        GENRE = 3,
+        IMAGE_PATH = 4,
+        SELLING_VOLUME = 5;
 
     var value = "",
         genre = "",
@@ -19,11 +15,43 @@ $(document).ready(function() {
     var url = decodeURIComponent(window.location.search.substring(1));
     var variables = url.split('&');
 
+    //Database: id, name, price, category, imagepath, sellingvolume
+    const gameList = [
+        ['arktika', 'Arktika', 399, 'action', './img/arktika.jpg', 20],
+        ['battlefield 4', 'Battlefield 4', 599, 'shooter', './img/battlefield.jpg', 30],
+        ['call of duty infinite warfare', 'Call of Duty: Infinite Warfare', 599, 'rpg', './img/callofduty.jpg', 40],
+        ['civilization vi', 'Civilization VI', 899, 'simulation', './img/civilization6.jpg', 50],
+        ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60],
+        ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/forzahorizon4.jpg', 70],
+        ['forza horizon 4', 'Forza Horizon 4', 799, 'family', './img/forzahorizon4.jpg', 80],
+        ['racing', 'Racing', 1299, 'sport', './img/racing.jpg', 90],
+        ['sea of theives', 'Sea of Theives', 1099, 'racing', './img/seaoftheives.jpg', 100]
+    ];
+
+    //Sorting use compartor function
+    function sortPriceASC(a, b) {
+        if (a[PRICE] < b[PRICE]) return -1;
+        if (a[PRICE] > b[PRICE]) return 1;
+        return 0;
+    }
+
+    function sortPriceDES(a, b) {
+        if (a[PRICE] < b[PRICE]) return 1;
+        if (a[PRICE] > b[PRICE]) return -1;
+        return 0;
+    }
+
+    function sortSoldVolume(a, b) {
+        if (a[SELLING_VOLUME] < b[SELLING_VOLUME]) return 1;
+        if (a[SELLING_VOLUME] > b[SELLING_VOLUME]) return -1;
+        return 0;
+    }
+
     function filter() {
         var result = [];
-        gameList.forEach(function(element) {
-            if (element[0].includes(value) && element[1] >= min && element[1] <= max && element[2].includes(genre)) {
-                result.push(element[0]);
+        gameList.forEach(function(game) {
+            if (game[ID].includes(value) && game[PRICE] >= min && game[PRICE] <= max && game[GENRE].includes(genre)) {
+                result.push(game[0]);
             }
         });
 
@@ -32,6 +60,28 @@ $(document).ready(function() {
         });
         result.forEach(function(element) {
             $("div[id*='" + element + "']").show();
+        });
+    }
+    /* ********** DECLARETION END ********** */
+
+    /* Generate game card */
+    function generateGameCard(gameArray) {
+        console.log(gameArray);
+        gameArray.forEach(function(game) {
+            var html = `
+                <div class="game card col-lg-4 col-md-6 col-sm-12" id="` + game[ID] + `" style="display: block;">
+                    <a href="#">
+                        <img class="card-img-top" src="` + game[IMAGE_PATH] + `" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">` + game[NAME] + `</h5><br/>
+                            <div class="box float-right">NT$ ` + game[PRICE] + `</div>
+                            <div class="box float-right" style="background-color: peru">` + game[SELLING_VOLUME] + ` SOLD</div>
+                        </div>
+                    </a>
+                </div>
+            `;
+            console.log(html);
+            $('#allGame').append(html);
         });
     }
 
@@ -49,34 +99,48 @@ $(document).ready(function() {
     }
 
     $('#searchBox').val(value);
+    generateGameCard(gameList);
     filter();
 
     $('#searchBox').on('keyup keypress', function(event) {
         if (event.keyCode === 10 || event.keyCode === 13) {
             event.preventDefault();
-            $('#submit').attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
+            $('#submit').attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre + "&filterType" + filterType);
             $('#submit').click();
         }
         value = $(this).val().toLowerCase();
         filter();
     });
 
-    $(".price").click(function() {
+    $(".price").on('click', function() {
         min = $(this).attr("min");
         max = $(this).attr("max");
         $(this).attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
     });
 
-    $(".genre").click(function() {
+    $(".genre").on('click', function() {
         genre = $(this).attr("genre");
         $(this).attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
     });
 
-    $('#submit').click(function() {
+    $('#submit').on('click', function() {
         $(this).attr("href", "store.html?min=" + min + "&max=" + max + "&value=" + value + "&genre=" + genre);
-    })
+    });
 
-    /*load more function */
+    $('#DropdownSelect').on('change', function() {
+        var gameArray;
+        var selected = $('#DropdownSelect option:selected').val();
+        if (selected == 1) {
+            gameArray = gameList.sort(sortSoldVolume);
+        } else if (selected == 2) {
+            gameArray = gameList.sort(sortPriceDES);
+        } else if (selected == 3) {
+            gameArray = gameList.sort(sortPriceASC);
+        } else {
+            gameArray = gameList;
+        }
 
-
+        $('#allGame').html('');
+        generateGameCard(gameArray);
+    });
 });

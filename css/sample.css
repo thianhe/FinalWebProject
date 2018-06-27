@@ -217,3 +217,17 @@ h1 {
 .dissapear {
     display: none !important;
 }
+
+/* comment */
+
+.form-group {
+    padding-top: 12px;
+}
+
+.jumbotron .form-control {
+    height: 160px;
+}
+
+.jumbotron .btn {
+    width: 15%;
+}

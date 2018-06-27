@@ -27,6 +27,22 @@ $(document).ready(function() {
             }
         }
     });
+    /*search function*/
+
+    var value = "";
+
+    $('#searchBox').on('keyup keypress', function(event) {
+        value = $(this).val().toLowerCase();
+        if (event.keyCode === 10 || event.keyCode === 13) {
+            // $('#submit').attr("href", "store.html?value=" + value);
+            $('#hiddenButton').click();
+        }
+    });
+
+    $("#submit").on('click', function(event) {
+        $(this).attr("href", "store.html?value=" + value);
+    });
+
     /*login button*/
     var modal_lv = 0;
     $('.modal').on('shown.bs.modal', function(e) {
