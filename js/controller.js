@@ -37,6 +37,10 @@ $(document).ready(function() {
         ['thesims4', 'Thesims4', 499, 'strategy simulation', './img/thesims4.jpg', 30, 'thesims4.html'],
         ['hellblade', 'Hellblade', 1299, 'survival action', './img/Hellblade.jpg', 70, 'Hellblade.html'],
         ['final fantasy xv', 'Final fantasy xv', 1099, 'rpg action', './img/final fantasy xv.jpg', 60, 'final fantasy xv.html'],
+        ['watchdog2', 'watchdog2', 1499, 'action', './img/watchdogs2.jpg', 70, 'watchdog2.html'],
+        ['team Super Sonic', 'Team Super Sonic', 899, 'action', './img/teamsupersonic.jpg', 20, 'Team Super Sonic.html'],
+        ['unravel', 'Unravel', 599, 'family', './img/unravel2.jpg', 20, 'unravel.html'],
+
     ];
 
     //Sorting use compartor function
