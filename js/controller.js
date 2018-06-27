@@ -33,7 +33,7 @@ $(document).ready(function() {
         ['Clash of Cards', 'Clash of Cardsr', 699, 'strategy', './img/Clash of Cards.jpg', 40,'ClashOfCards.html'],
         ['thesims4', 'Thesims4', 499, 'strategy simulation', './img/thesims4.jpg', 30,'thesims4.html'],
         ['hellblade', 'Hellblade', 1299, 'survival action', './img/Hellblade.jpg', 70,'Hellblade.html'],
-        ['final fantasy xv', 'Final fantasy xv', 1099, 'final fantasy xv', './img/final fantasy xv.jpg', 60,'final fantasy xv.html'],
+        ['final fantasy xv', 'Final fantasy xv', 1099, 'rpg action', './img/final fantasy xv.jpg', 60,'final fantasy xv.html'],
     ];
 
     //Sorting use compartor function
