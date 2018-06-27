@@ -272,37 +272,6 @@ footer p {
     outline: none;
 }
 
-.example-chat .example-chat-toolbar {
-    background-color: #fff;
-    padding: 10px;
-    position: relative;
-    border-bottom: 1px solid #ccc;
-}
-
-.example-chat .example-chat-toolbar label {
-    text-transform: uppercase;
-    line-height: 32px;
-    font-size: 14px;
-    color: #999;
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    z-index: 1;
-}
-
-.example-chat .example-chat-toolbar input {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border: 1px solid #fff;
-    padding-left: 100px;
-    color: #999;
-}
-
-.example-chat .example-chat-toolbar input:active, .example-chat .example-chat-toolbar input:focus {
-    color: #1d9dff;
-    border: 1px solid #fff;
-}
-
 .example-chat ul {
     list-style: none;
     margin: 0px;
@@ -314,6 +283,9 @@ footer p {
 .example-chat ul li {
     margin-bottom: 10px;
     line-height: 24px;
+    border: 1px solid black;
+    height: 200px;
+    color: purple;
 }
 
 .example-chat ul li:last-child {
@@ -322,16 +294,6 @@ footer p {
 
 .example-chat ul .example-chat-username {
     margin-right: 10px;
-}
-
-.example-chat footer {
-    display: block;
-    padding: 10px;
-}
-
-.example-chat footer input {
-    border: 1px solid #ced3db;
-    height: 40px;
 }
 
 #colorholder {
@@ -447,4 +409,12 @@ footer p {
 
 #gameInProgress {
     font-size: 14px;
+}
+
+.la p1 {
+    font-size: 100px;
+}
+
+.list-group-item {
+    margin-bottom: 10px !important;
 }

@@ -185,14 +185,21 @@ $(document).ready(function() {
     messagesRef.limitToLast(10).on('child_added', function(snapshot) {
         //GET DATA
         var data = snapshot.val();
-        var username = data.name || "anonymous";
+        var username = data.name;
         var message = data.text;
-
+        var day = new Date();
         //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-        var messageElement = $("<li>");
+        var messageElement = $("<div class='space'>");
         var nameElement = $("<strong class='example-chat-username'></strong>")
-        nameElement.text(username);
-        messageElement.text(message).prepend(nameElement);
+        $("#example-messages").append(
+            $('<div class="list-group-item la">').append($("<h2>", {
+                text: username
+            })).append($("<p>", {
+                text: day.toUTCString()
+            })).append($("<h3>", {
+                text: message
+            }))
+        )
 
         //ADD MESSAGE
         messageList.append(messageElement)
