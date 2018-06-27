@@ -91,9 +91,9 @@
                         <div id="img">
                             <div id="section1" class="game-pic">
                                 <img src="./img/thesims4.jpg">
-                                <div class="carousel-caption ">
+                                <div class="carousel-caption">
                                     <h1>Play With life.</h1>
-                                    <p><a class="btn btn-lg btn-primary custom-btn" href="#" role="button">Get now</a></p>
+                                    <p><button class="btn btn-lg btn-primary custom-btn" href="#" role="button">Get now</button></p>
                                 </div>
 
                             </div>
@@ -175,21 +175,21 @@
                             </div>
                             <div id="review">
                                 <h1>Review</h1>
-                                <div class="jumbotron jumbotron-fluid">
-                                    <div class="container">
-                                        <form>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="inputComment" aria-describedby="emailHelp" placeholder="Write comment">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Post</button>
-                                        </form>
-                                    </div>
-                                </div><br>
+                                <div class="container">
+                                    <form action="/action_page.php">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Write a comment "></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                                <br>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+
                 <nav class=" col-lg-3" id="myScrollspy">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
