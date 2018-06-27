@@ -75,7 +75,6 @@ $(document).ready(function() {
                         <img class="card-img-top" src="` + game[IMAGE_PATH] + `" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">` + game[NAME] + `</h5>
-
                             <div class="box float-right">NT$ ` + game[PRICE] + `</div>
                             <div class="box float-right" style="background-color: peru">` + game[SELLING_VOLUME] + ` SOLD</div>
                         </div>
