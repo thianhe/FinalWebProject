@@ -29,6 +29,7 @@ $(document).ready(function() {
         ['command conquer', 'Command & Conquer', 239, 'survival', './img/commandandconquer.jpg', 60, 'command_conquer.html'],
         ['detroit become human', 'Detroit: Become Human', 1899, 'strategy', './img/detroit.jpg', 70, 'Detroit.html'],
         ['forza horizon 4', 'Forza Horizon 4', 799, 'racing sport', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
+<<<<<<< HEAD
         ['dark souls remastered', 'Dark souls remastered', 1299, 'action survival', './img/darksoul.jpg', 90,'darksoul.html'],
         ['sea of theives', 'Sea of Theives', 1099, 'survival simulation', './img/seaoftheives.jpg', 100,'sea_of_theive.html'],
         ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.jpg', 110,'HeroineAnthemZERO.html'],
@@ -40,6 +41,20 @@ $(document).ready(function() {
         ['watchdog2', 'watchdog2', 1499, 'action', './img/watchdogs2.jpg', 70,'watchdog2.html'],
         ['team Super Sonic', 'Team Super Sonic', 899, 'action', './img/teamsupersonic.jpg', 20,'Team Super Sonic.html'],
         ['unravel', 'Unravel', 599, 'family', './img/unravel2.jpg', 20,'unravel.html'],
+=======
+        ['dark souls remastered', 'Dark souls remastered', 1299, 'action survival', './img/darksoul.jpg', 90, 'darksoul.html'],
+        ['sea of theives', 'Sea of Theives', 1099, 'survival simulation', './img/seaoftheives.jpg', 100, 'sea_of_theive.html'],
+        ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.jpg', 110, 'HeroineAnthemZERO.html'],
+        ['rise of the Tomb Raider', 'Rise of the Tomb Raider', 799, 'survival action', './img/Raider.jpg', 80, 'RiseOfTheTombRaider.html'],
+        ['Clash of Cards', 'Clash of Cardsr', 699, 'strategy', './img/Clash of Cards.jpg', 40, 'ClashOfCards.html'],
+        ['thesims4', 'Thesims4', 499, 'strategy simulation', './img/thesims4.jpg', 30, 'thesims4.html'],
+        ['hellblade', 'Hellblade', 1299, 'survival action', './img/Hellblade.jpg', 70, 'Hellblade.html'],
+        ['final fantasy xv', 'Final fantasy xv', 1099, 'rpg action', './img/final fantasy xv.jpg', 60, 'final fantasy xv.html'],
+        ['watchdog2', 'watchdog2', 1499, 'action', './img/watchdogs2.jpg', 70, 'watchdog2.html'],
+        ['team Super Sonic', 'Team Super Sonic', 899, 'action', './img/teamsupersonic.jpg', 20, 'Team Super Sonic.html'],
+        ['unravel', 'Unravel', 599, 'family', './img/unravel2.jpg', 20, 'unravel.html'],
+
+>>>>>>> 05f3202212e35a832ec07dcfa181ebc549d480ca
     ];
 
     //Sorting use compartor function
