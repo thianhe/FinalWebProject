@@ -37,7 +37,7 @@ nav a {
     margin-right: 3%;
 }
 
-.login {
+.login, .user {
     filter: brightness(70%);
     cursor: pointer;
 }
@@ -272,30 +272,6 @@ footer p {
     outline: none;
 }
 
-.example-chat ul {
-    list-style: none;
-    margin: 0px;
-    padding: 20px;
-    height: 200px;
-    overflow: auto;
-}
-
-.example-chat ul li {
-    margin-bottom: 10px;
-    line-height: 24px;
-    border: 1px solid black;
-    height: 200px;
-    color: purple;
-}
-
-.example-chat ul li:last-child {
-    margin: 0px;
-}
-
-.example-chat ul .example-chat-username {
-    margin-right: 10px;
-}
-
 #colorholder {
     width: 480px;
     height: 30px;
@@ -411,10 +387,10 @@ footer p {
     font-size: 14px;
 }
 
-.la p1 {
-    font-size: 100px;
+.list-group-item h2 {
+    margin-bottom: 10px;
 }
 
-.list-group-item {
-    margin: 10px !important;
+.la {
+    font-size: 100px;
 }

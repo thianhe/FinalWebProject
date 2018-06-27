@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="./css/sample.css">
     <script src="./js/script.js" charset="utf-8"></script>
@@ -23,298 +22,258 @@
 </head>
 
 
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand logo nav-link" href="index.html">
-                <img src="./img/logo.png">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand logo nav-link" href="index.html"><img src="./img/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto navb">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="store.html">Store</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sample.html">About</a>
-                    </li>
-                </ul>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto navb">
+                <li class="nav-item ">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="store.html">Store</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sample.html">About</a>
+                </li>
+            </ul>
 
-                <form class="form-inline mt-4 mt-md-0 search">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search for games" aria-label="Search">
-                    <button class="btn btn-outline-light my-2 my-sm-0 " type="submit">Search</button>
-                </form>
-
-                <div type="" class="navbar-brand login" data-toggle="modal" data-target="#modal-a"><img src="./img/login.png">&nbsp;LOG IN
-                </div>
-
+            <form class="form-inline mt-4 mt-md-0 search">
+                <input id="searchBox" class="form-control mr-sm-2" type="text" placeholder="Search for games" aria-label="Search">
+                <a id="submit" href="#" class="btn btn-flat btn-danger btn-outline-light">Search</a>
+            </form>
+            <div type="" class="navbar-brand login" data-toggle="modal" data-target="#modal-a"><img src="./img/login.png">&nbsp;LOG IN
             </div>
-        </nav>
-    </header>
-    <div class="modal fade" id="modal-a" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign in to Play</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </div>
+    </nav>
+</header>
+<div class="modal fade" id="modal-a" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signIn">Sign in to Play</h5>
+                <div id="welcomeDiv" style="display:none;">
+                    <h5>Welcome back!</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <div class="my-3 ">
-                        <input id="txtEmail" type="email" placeholder="Email" class="form-control"></div>
-                    <div id="welcomeDiv" style="display:none;">
-                        <h1>Welcome back!</h1></div>
-                    <div class="my-3">
-                        <input id="txtPassword" type="password" placeholder="Password" class="form-control"></div>
-                </div>
-                <div class="modal-footer">
-                    <button id="btnLogin" class="btn btn-action">
+            </div>
+            <div class="modal-body" id="wtf">
+                <div class="my-3 ">
+                    <input id="txtEmail" type="email" placeholder="Email" class="form-control"></div>
+                <div id="user" style="display:none ;" class="text-center">
+                    <h2>User</h2></div>
+                <div class="my-3">
+                    <input id="txtPassword" type="password" placeholder="Password" class="form-control"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnLogin" class="btn btn-action">
                         Log in
                     </button>
-                    <button id="btnSignup" class="btn btn-secondary">
+                <button id="btnSignup" class="btn btn-secondary">
                         Sign Up
                     </button>
-                    <button id="btnLogout" class="btn btn-action dissapear">
+                <button id="btnLogout" class="btn btn-action dissapear">
                         Log out
                     </button>
-                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="jumbotron jumbotron-fluid">
-                        <div id="img">
-                            <div id="section1" class="game-pic">
-                                <img src="./img/command_conquer.PNG">
-                                <div class="carousel-caption ">
-                                    <h1>Play With life.</h1>
-                                    <p>
-                                        <a class="btn btn-lg btn-primary custom-btn" href="#" role="button">Get now</a>
-                                    </p>
-                                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="jumbotron jumbotron-fluid">
+                    <div id="img">
+                        <div id="section1" class="game-pic">
+                            <img src="./img/command_conquer.PNG">
+                            <div class="carousel-caption ">
+                                <p><button id="getnow" class="btn btn-lg btn-primary custom-btn" href="#" role="button">Get now</button></p>
 
                             </div>
-                        </div>
-                        <div class="container" id="lalala">
-                            <div id="Screenshots-and-Videos">
-                                <h1>Screenshots and Videos</h1>
 
-                                <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
-                                    <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                                        <div class="carousel-item col-md-3 active">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_1.png" alt="slide 1">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_2.png" alt="slide 2">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_3.png" alt="slide 3">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_4.png" alt="slide 4">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_5.png" alt="slide 4">
-                                        </div>
-                                        <div class="carousel-item col-md-3 ">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_1.png" alt="slide 1">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_2.png" alt="slide 2">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_3.png" alt="slide 3">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_4.png" alt="slide 4">
-                                        </div>
-                                        <div class="carousel-item col-md-3">
-                                            <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_5.png" alt="slide 4">
-                                        </div>
+                        </div>
+                    </div>
+                    <div class="container" id="lalala">
+                        <div id="Screenshots-and-Videos">
+                            <h1>Screenshots and Videos</h1>
+
+                            <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
+                                <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                                    <div class="carousel-item col-md-3 active">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_1.png" alt="slide 1">
                                     </div>
-                                    <a class="carousel-control-prev text-faded" href="#carouselExample" role="button" data-slide="prev">
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_2.png" alt="slide 2">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_3.png" alt="slide 3">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_4.png" alt="slide 4">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_5.png" alt="slide 4">
+                                    </div>
+                                    <div class="carousel-item col-md-3 ">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_1.png" alt="slide 1">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_2.png" alt="slide 2">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_3.png" alt="slide 3">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_4.png" alt="slide 4">
+                                    </div>
+                                    <div class="carousel-item col-md-3">
+                                        <img class="img-fluid mx-auto d-block slide-img" src="./img/command_conquer_5.png" alt="slide 4">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev text-faded" href="#carouselExample" role="button" data-slide="prev">
                                         <i class="fa fa-chevron-left fa-lg text-muted"></i>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+                                <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
                                         <i class="fa fa-chevron-right fa-lg text-muted"></i>
                                         <span class="sr-only">Next</span>
                                     </a>
+                            </div>
+                        </div>
+                        <div id="description">
+                            <h1>Description</h1>
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <p> Behold disciples of Nod, for the end is soon upon us. Electronic Arts’ award-winning and best-selling Tiberium saga is coming to a powerful conclusion with Command & Conquer 4, which will introduce a multitude of innovations
+                                        to the classic fast and fluid Command & Conquer gameplay, while retaining the core compulsions that fans have come to love over the series’ history.
+                                        <br>
+                                        <br>It is the year 2062 and humanity is at the brink of extinction. Tiberium, the mysterious, alien crystalline structure that has infested Earth for decades and served as the primary reason for years of relentless
+                                        conflict between the Global Defense Initiative (GDI) and the Brotherhood of Nod, is close to rendering the planet uninhabitable. Mankind is on the verge of extinction when Kane, Nod’s prophetic leader, emerges from
+                                        seclusion to deliver GDI the message that he has developed a system that could control Tiberium and harness its power. But he cannot build this "Tiberium Control Network" without GDI’s cooperation. Thus, the two
+                                        opposing factions – GDI and Nod – inevitably find themselves in desperation for the same cause: to stop Tiberium from extinguishing mankind.
+                                        <br>
+                                        <br> After 15 years, the network is nearly complete, Tiberium is under strict control and our revitalized, newly terraformed planet is on the cusp of a new age of prosperity and progress. It is then that the world’s
+                                        citizens begin to seriously ponder why Kane chose to help, and what will he want in return. These questions and more lead to the dramatic final act of the Tiberium saga. </p>
                                 </div>
                             </div>
-                            <div id="description">
-                                <h1>Description</h1>
-                                <div class="jumbotron jumbotron-fluid">
-                                    <div class="container">
-                                        <p> Behold disciples of Nod, for the end is soon upon us. Electronic Arts’ award-winning
-                                            and best-selling Tiberium saga is coming to a powerful conclusion with Command
-                                            & Conquer 4, which will introduce a multitude of innovations to the classic fast
-                                            and fluid Command & Conquer gameplay, while retaining the core compulsions that
-                                            fans have come to love over the series’ history.
-                                            <br>
-                                            <br>It is the year 2062 and humanity is at the brink of extinction. Tiberium, the
-                                            mysterious, alien crystalline structure that has infested Earth for decades and
-                                            served as the primary reason for years of relentless conflict between the Global
-                                            Defense Initiative (GDI) and the Brotherhood of Nod, is close to rendering the
-                                            planet uninhabitable. Mankind is on the verge of extinction when Kane, Nod’s
-                                            prophetic leader, emerges from seclusion to deliver GDI the message that he has
-                                            developed a system that could control Tiberium and harness its power. But he
-                                            cannot build this "Tiberium Control Network" without GDI’s cooperation. Thus,
-                                            the two opposing factions – GDI and Nod – inevitably find themselves in desperation
-                                            for the same cause: to stop Tiberium from extinguishing mankind.
-                                            <br>
-                                            <br> After 15 years, the network is nearly complete, Tiberium is under strict control
-                                            and our revitalized, newly terraformed planet is on the cusp of a new age of
-                                            prosperity and progress. It is then that the world’s citizens begin to seriously
-                                            ponder why Kane chose to help, and what will he want in return. These questions
-                                            and more lead to the dramatic final act of the Tiberium saga. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="overview">
-                                <h1>Overview</h1>
-                                <div class="jumbotron jumbotron-fluid">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-12">
-                                                <p><b>Genre :</b>
-                                                    <br>Strategies
-                                                    <br>
-                                                    <br> <b>Release :</b>
-                                                    <br> March 16, 2010
-                                                    <br>
-                                                    <br><b>Rating :</b>
-                                                    <br> 輔15級
-                                                    <br>
-                                                    <br><b>Publisher : </b>
-                                                    EA Los Angeles </p>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-12">
-                                                <p><b>Developer :</b>
-                                                    <br>
-                                                    Electronic Arts
-                                                    <br>
-                                                    <br> <b>Supported languages :</b>
-                                                    <br>Český, Dansk, Deutsch (DE), English (US), Español (ES), Suomi, Français
-                                                    (FR), Italiano, 日本語, Nederlands, Polski, Português (BR), Русский язык,
-                                                    Svenska, 中文（繁體）
-                                                    <br>
+                        </div>
+                        <div id="overview">
+                            <h1>Overview</h1>
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <p><b>Genre :</b>
+                                                <br>Strategies
+                                                <br>
+                                                <br> <b>Release :</b>
+                                                <br> March 16, 2010
+                                                <br>
+                                                <br><b>Rating :</b>
+                                                <br> 輔15級
+                                                <br>
+                                                <br><b>Publisher : </b> EA Los Angeles </p>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <p><b>Developer :</b>
+                                                <br> Electronic Arts
+                                                <br>
+                                                <br> <b>Supported languages :</b>
+                                                <br>Český, Dansk, Deutsch (DE), English (US), Español (ES), Suomi, Français (FR), Italiano, 日本語, Nederlands, Polski, Português (BR), Русский язык, Svenska, 中文（繁體）
+                                                <br>
 
-                                                </p>
-                                            </div>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="System-Requirements">
-                                <h1>System Requirements</h1>
-                                <div class="jumbotron jumbotron-fluid">
-                                    <div class="container">
-                                        <p>
-                                            <b>MINIMUM SPECS:</b>
-                                            <br>OS: Windows XP SP3, Windows Vista SP1, or Windows 7
-                                            <br> CPU: Intel Core 2 or better, AMD 64 X2 or better
-                                            <br>RAM: At least 1 GB RAM
-                                            <br> HARD DRIVE: 10 GB available space
-                                            <br> VIDEO: 128 MB of Video RAM and support for Pixel Shader 3.0.
-                                            <br>Supported Video Cards: 1 GB DirectX 11 Video Card (AMD 5570 or nVidia 450)
-                                            <br> DIRECTX: DirectX 9.0c compatible
-                                            <br>SOUND CARD: DirectX 9.0c Compatible
-                                            <br>INPUT: Keyboard and Mouse
-                                            <br> ONLINE REQUIREMENTS: Internet connection required for product activation.
-                                            <br>
-                                            <br>
-                                            <b>RECOMMENDED SPECS:</b>
-                                            <br>OS: 64 Bit Windows 7, 8, 8.1, or 10
-                                            <br>PROCESSOR:  Intel Core 2 Duo 2.6 GHz; AMD Athlon 64 X2 Dual-Core 5600+
-                                            <br> VIDEO CARD:2 GB DirectX 11 Video Card (AMD 7970 or nVidia 770 or greater)
-                                            <br>MEMORY: 2 GB RAM
-                                            <br>HARD DRIVE: 20 GB of Hard Drive space
-                                        </p>
-                                    </div>
+                        </div>
+                        <div id="System-Requirements">
+                            <h1>System Requirements</h1>
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <p>
+                                        <b>MINIMUM SPECS:</b>
+                                        <br>OS: Windows XP SP3, Windows Vista SP1, or Windows 7
+                                        <br> CPU: Intel Core 2 or better, AMD 64 X2 or better
+                                        <br>RAM: At least 1 GB RAM
+                                        <br> HARD DRIVE: 10 GB available space
+                                        <br> VIDEO: 128 MB of Video RAM and support for Pixel Shader 3.0.
+                                        <br>Supported Video Cards: 1 GB DirectX 11 Video Card (AMD 5570 or nVidia 450)
+                                        <br> DIRECTX: DirectX 9.0c compatible
+                                        <br>SOUND CARD: DirectX 9.0c Compatible
+                                        <br>INPUT: Keyboard and Mouse
+                                        <br> ONLINE REQUIREMENTS: Internet connection required for product activation.
+                                        <br>
+                                        <br>
+                                        <b>RECOMMENDED SPECS:</b>
+                                        <br>OS: 64 Bit Windows 7, 8, 8.1, or 10
+                                        <br>PROCESSOR: Intel Core 2 Duo 2.6 GHz; AMD Athlon 64 X2 Dual-Core 5600+
+                                        <br> VIDEO CARD:2 GB DirectX 11 Video Card (AMD 7970 or nVidia 770 or greater)
+                                        <br>MEMORY: 2 GB RAM
+                                        <br>HARD DRIVE: 20 GB of Hard Drive space
+                                    </p>
                                 </div>
-                            </div>
-                            <div id="review">
-                                <h1>Review</h1>
-                                <div class="jumbotron jumbotron-fluid">
-                                    <div class="container">
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                    </div>
-                                </div>
-                                <br>
                             </div>
                         </div>
+                        <div id="review">
+                            <h1>Review</h1>
+                            <div class="example-chat ">
+                                <ul id='example-messages' class="list-group la"></ul>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" id="messageInput" name="text" placeholder="Share your thoughts"></textarea>
+                                </div>
+                                <button id="commentSubmit" class="btn btn-primary">Post</button>
+                            </div>
+                            <br>
+                        </div>
                     </div>
-
                 </div>
-                <nav class=" col-lg-3" id="myScrollspy">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#section1">Title</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#Screenshots-and-Videos">Screenshots and Videos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#description">Description</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#overview">Overview</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#System-Requirements">System Requirements</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#review">Review</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
 
-            <hr class="featurette-divider">
-            <footer class="container">
-                <p class="float-right">
-                    <a href="#">Back to top</a>
-                </p>
-                <p>&copy; NTUT &middot; CSIE &middot; 2018</p>
-            </footer>
+            </div>
+            <nav class=" col-lg-3" id="myScrollspy">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#section1">Title</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Screenshots-and-Videos">Screenshots and Videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#description">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#System-Requirements">System Requirements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#review">Review</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-            crossorigin="anonymous"></script>
-    </body>
+
+        <hr class="featurette-divider">
+        <footer class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>&copy; NTUT &middot; CSIE &middot; 2018</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
 
 </html>

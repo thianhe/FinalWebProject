@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto navb">
                     <li class="nav-item ">
-                        <a class="nav-link " href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="store.html">Store</a>
@@ -41,29 +41,30 @@
 
                 <form class="form-inline mt-4 mt-md-0 search">
                     <input id="searchBox" class="form-control mr-sm-2" type="text" placeholder="Search for games" aria-label="Search">
-                    <a id="submit" href="#" class="btn btn-flat btn-danger btn-outline-light" onclick="click()">Search</a>
+                    <a id="submit" href="#" class="btn btn-flat btn-danger btn-outline-light">Search</a>
                 </form>
                 <div type="" class="navbar-brand login" data-toggle="modal" data-target="#modal-a"><img src="./img/login.png">&nbsp;LOG IN
                 </div>
             </div>
-            <!--<a class="navbar-brand login" href="#"><img src="./img/login.png">&nbsp;LOG IN</a>-->
         </nav>
     </header>
-    <!--pop out-->
     <div class="modal fade" id="modal-a" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign in to Play</h5>
+                    <h5 class="modal-title" id="signIn">Sign in to Play</h5>
+                    <div id="welcomeDiv" style="display:none;">
+                        <h5>Welcome back!</h5>
+                    </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="wtf">
                     <div class="my-3 ">
                         <input id="txtEmail" type="email" placeholder="Email" class="form-control"></div>
-                    <div id="welcomeDiv" style="display:none;">
-                        <h1>Welcome back!</h1></div>
+                    <div id="user" style="display:none ;" class="text-center">
+                        <h2>User</h2></div>
                     <div class="my-3">
                         <input id="txtPassword" type="password" placeholder="Password" class="form-control"></div>
                 </div>

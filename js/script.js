@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    var email = txtEmail.value;
     var $select1 = $('#select1'),
         $select2 = $('#select2'),
         $options = $select2.find('option');
@@ -64,8 +63,6 @@ $(document).ready(function() {
         messagingSenderId: "487451576900"
     };
     firebase.initializeApp(config);
-    var dbRef = firebase.database().ref();
-
     // CREATE A REFERENCE TO FIREBASE
     var messagesRef = firebase.database().ref();
 
@@ -73,7 +70,6 @@ $(document).ready(function() {
     var messageField = $('#messageInput');
     var nameField = $('#txtEmail');
     var messageList = $('#example-messages');
-
     document.getElementById("btnLogin").addEventListener('click', e => {
         // Get email and pass
         const email = txtEmail.value;
@@ -102,87 +98,64 @@ $(document).ready(function() {
         alert('Logout Successfully!');
     });
     //Add a realtime listener
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-            console.log(firebaseUser);
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user);
             btnLogout.classList.remove('dissapear');
             btnLogin.classList.add('dissapear');
             btnSignup.classList.add('dissapear');
             txtEmail.classList.add('dissapear');
             txtPassword.classList.add('dissapear');
+            wtf.classList.add('dissapear');
             document.getElementById('welcomeDiv').style.display = "block";
-            $("#commentSubmit").on('click', function(event) {
+            document.getElementById('signIn').style.display = "none";
+            //document.getElementById("user").append(firebase.auth().currentUser.email);
+            //document.getElementById('user').style.display = "block";
 
-                //FIELD VALUES
-                var username = firebase.auth().currentUser.email;
-                var message = messageField.val();
-
-                //SAVE DATA TO FIREBASE AND EMPTY FIELD
-                messagesRef.push({
-                    name: username,
-                    text: message
-                });
-                messageField.val('');
-
-            });
-
-        } else if (!firebaseUser) {
+        } else {
             console.log('not logged in');
             btnLogout.classList.add('dissapear');
             btnLogin.classList.remove('dissapear');
             btnSignup.classList.remove('dissapear');
             txtEmail.classList.remove('dissapear');
             txtPassword.classList.remove('dissapear');
+            wtf.classList.remove('dissapear');
             document.getElementById('welcomeDiv').style.display = "none";
+            document.getElementById('signIn').style.display = "block";
+
+            //document.getElementById("user").style.display = "none";
         }
     });
-    /*var $userField = $('#txtEmail');
-    var $commentField = $('#commentInput');
-    var $commentList = $('#commentArea');
-    // messages
-    document.getElementById("#post").addEventListener('click', e => {
-        if (e.keyCode == 13) {
-            //FIELD VALUES
-            var useremail = $userField.val();
-            var message = $commentField.val();
-            console.log(useremail)
-            console.log(message)
 
+    getnow.addEventListener('click', e => {
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+            alert('Thanks for buying!');
+
+        } else {
+            alert('Please log in!');
+        }
+    });
+    $("#commentSubmit").on('click', function(event) {
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+            var username = firebase.auth().currentUser.email;
+            var message = messageField.val();
             //SAVE DATA TO FIREBASE AND EMPTY FIELD
-            dbRef.push({
-                email: email,
-                text = message
+            messagesRef.push({
+                name: username,
+                text: message
             });
-            $commentField.val('');
+            messageField.val('');
+        } else {
+            alert('Please log in!');
         }
+
     });
+    messagesRef.limitToLast(20).on('child_added', function(snapshot) {
 
-    dbRef.limitToLast(20).on('child_added', function(snapshot) {
-        //Get data
-        var data = snapshot.val();
-        var username = data.name || "anonymous";
-        var message = data.text;
-
-        //CREATE ELEMENTS
-        var $messageElement = $('#comment');
-
-        $nameElement.text(username);
-        $messageElement.text(message).prepend($nameElement);
-
-        //ADD $messageElement
-        $messageList.append($messageElement);
-        //SCROLL TO BOTTOM OF MESSAGE lIST
-        $messageList[0].scrollTop = $messageList[0].scrollHeight;
-    });*/
-
-
-
-
-    // LISTEN FOR KEYPRESS EVENT
-
-
-    // Add a callback that is triggered for each chat message.
-    messagesRef.limitToLast(10).on('child_added', function(snapshot) {
         //GET DATA
         var data = snapshot.val();
         var username = data.name;
@@ -192,7 +165,7 @@ $(document).ready(function() {
         var messageElement = $("<div class='space'>");
         var nameElement = $("<strong class='example-chat-username'></strong>")
         $("#example-messages").append(
-            $('<div class="list-group-item la">').append($("<h2>", {
+            $('<div class="mb-3 list-group-item rounded">').append($("<h1>", {
                 text: username
             })).append($("<p>", {
                 text: day.toUTCString()
@@ -200,10 +173,8 @@ $(document).ready(function() {
                 text: message
             }))
         )
-
         //ADD MESSAGE
         messageList.append(messageElement)
-
         //SCROLL TO BOTTOM OF MESSAGE LIST
         messageList[0].scrollTop = messageList[0].scrollHeight;
     });
