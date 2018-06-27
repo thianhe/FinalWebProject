@@ -39,6 +39,7 @@ nav a {
 
 .login {
     filter: brightness(70%);
+    cursor: pointer;
 }
 
 .carousel {
@@ -188,4 +189,12 @@ footer p {
     .anthem {
         margin-bottom: 1%;
     }
+}
+
+.submit-border {
+    width: 100% !important;
+}
+
+.dissapear {
+    display: none;
 }

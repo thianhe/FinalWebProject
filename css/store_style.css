@@ -39,6 +39,7 @@ nav a {
 
 .login {
     filter: brightness(70%);
+    cursor: pointer;
 }
 
 .carousel {
@@ -211,4 +212,12 @@ footer p {
     color: white;
     background-color: black;
     padding: 5px;
+}
+
+.submit-border {
+    width: 100% !important;
+}
+
+.dissapear {
+    display: none !important;
 }
