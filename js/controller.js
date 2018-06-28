@@ -29,7 +29,7 @@ $(document).ready(function() {
         ['forza horizon 4', 'Forza Horizon 4', 799, 'racing sport', './img/forzahorizon4.jpg', 80, 'forza_horizon.html'],
         ['dark souls remastered', 'Dark souls remastered', 1299, 'action survival', './img/darksoul.jpg', 90, 'darksoul.html'],
         ['sea of theives', 'Sea of Theives', 1099, 'survival simulation', './img/seaoftheives.jpg', 100, 'sea_of_theive.html'],
-        ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.jpg', 110, 'HeroineAnthemZERO.html'],
+        ['heroine_Anthem', 'Heroine_Anthem', 999, 'action', './img/Heroine_Anthem.JPG', 110, 'HeroineAnthemZERO.html'],
         ['rise of the Tomb Raider', 'Rise of the Tomb Raider', 799, 'survival action', './img/Raider.jpg', 80, 'RiseOfTheTombRaider.html'],
         ['Clash of Cards', 'Clash of Cardsr', 699, 'strategy', './img/Clash of Cards.jpg', 40, 'ClashOfCards.html'],
         ['thesims4', 'Thesims4', 499, 'strategy simulation', './img/thesims4.jpg', 30, 'thesims4.html'],
