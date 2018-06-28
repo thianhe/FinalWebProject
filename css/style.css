@@ -416,3 +416,7 @@ footer p {
 .la {
     font-size: 100px;
 }
+
+#review .hide_p {
+    display: none !important;
+}

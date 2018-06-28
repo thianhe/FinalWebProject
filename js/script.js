@@ -64,7 +64,8 @@ $(document).ready(function() {
     };
     firebase.initializeApp(config);
     // CREATE A REFERENCE TO FIREBASE
-    var messagesRef = firebase.database().ref();
+    var messagePage = $("#review")[0].children[0].innerText;
+    var messagesRef = firebase.database().ref(messagePage);
 
     // REGISTER DOM ELEMENTS
     var messageField = $('#messageInput');
@@ -144,13 +145,14 @@ $(document).ready(function() {
             var username = firebase.auth().currentUser.email;
             var message = messageField.val();
             //SAVE DATA TO FIREBASE AND EMPTY FIELD
+            console.log(message);
             messagesRef.push({
                 name: username,
                 text: message
             });
             messageField.val('');
         } else {
-            alert('Please log in!');
+            alert('Please log in to comment!');
         }
 
     });
@@ -158,6 +160,7 @@ $(document).ready(function() {
 
         //GET DATA
         var data = snapshot.val();
+        console.log(data);
         var username = data.name;
         var message = data.text;
         var day = new Date();
@@ -167,7 +170,7 @@ $(document).ready(function() {
         $("#example-messages").append(
             $('<div class="mb-3 list-group-item rounded">').append($("<h1>", {
                 text: username
-            })).append($("<p>", {
+            })).append($("<h20>", {
                 text: day.toUTCString()
             })).append($("<h3>", {
                 text: message
